@@ -1,0 +1,14 @@
+header {
+    background-color: #A0C1F5;
+    text-align: center;
+    padding: 6em 0em;
+}
+
+header #title {
+    color: white;
+}
+
+header #location {
+    border-radius: 4px;
+    border: none;
+}
