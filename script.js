@@ -29,35 +29,21 @@ function GrabWeatherResults() {
         });
 }
 
+function KelvinToCelsius(temperature) {
+    return parseInt(temperature - 273);
+}
+
+
 function PostResults(place, weather, temp, feelsLike) {
     var card = document.createElement("div");
     card.setAttribute("class", "card");
 
-    var cardBody = document.createElement("div");
-    cardBody.setAttribute("class", "card-body");
-
-    var name = document.createElement("h3");
-    name.setAttribute("class", "card-title");
-    name.innerText = place;
-
-    var bg = document.createElement('div');
-	bg.setAttribute('class', 'bg-div');
-	bg.style.backgroundImage = `url(${getImage(id)})`
-
-    var atmo = document.createElement("h5");
-    atmo.setAttribute("class", "card-subtitle mb-2 text-muted");
-    atmo.innerText = weather;
-
-    var temperature = document.createElement("p");
-    temperature.setAttribute("class", "card-text");
-    temperature.innerText = `Temperature is ${KelvinToCelsius(temp)}°C\nFeels like ${KelvinToCelsius(feelsLike)}°C`;
-
-    cardBody.append(name, bg, atmo, temperature);
-    card.appendChild(cardBody);
-
+    card.innerHTML = `
+        <div class="card-body">
+          <h3 class="card-title">${place}</h3>
+          <h5 class="card-subtitle mb-2 text-muted">${weather}</h5>
+          <p class="card-text">Temperature is ${KelvinToCelsius(temp)}°C\nFeels like ${KelvinToCelsius(feelsLike)}°C</p>
+        </div>
+    `
     document.getElementById("results").appendChild(card);
-}
-
-function KelvinToCelsius(temperature) {
-    return parseInt(temperature - 273);
 }
