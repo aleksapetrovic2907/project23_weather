@@ -17,8 +17,6 @@ function GrabSearchValue() {
     location = document.getElementById("searchParameter").value;
 }
 
-async function Post() {
-    document.getElementById("results").innerHTML = await WeatherToHTML(location);
+function Post() {
+    WeatherToHTML(location).then(html => { document.getElementById("results").innerHTML = html });
 }
-
-
